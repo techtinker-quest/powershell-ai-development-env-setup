@@ -18,7 +18,7 @@ Perfect for **data science**, **computer vision**, **NLP**, and **MLOps**.
 - 🤖 **AI frameworks:** PyTorch (GPU/CPU auto), Transformers, optional TensorFlow  
 - 👁️ **Vision & OCR:** `ultralytics`, `paddleocr`, `easyocr`  
 - 💬 **NLP tools:** `spaCy`, `langdetect`, `datasets`, `accelerate`  
-- 📊 **MLOps:** `MLflow`, `label-studio`  
+- 📊 **MLOps:** `MLflow`, `argilla`  
 - 🧹 **Dev tools:** `black`, `flake8`, `mypy`, `pytest`  
 - 🔗 **VS Code:** Auto-configured with 7 AI-friendly extensions such as Linting, formatting, interpreter
 - ⚙️ **Auto GPU detection:** Installs CUDA-enabled PyTorch if available
@@ -116,13 +116,13 @@ python -c "import torch, ultralytics; print('All good!')"
 ### Expected output:
 ```text
 AI Environment Activated! (ai_project)
-All good! YOLO ready.
+All good!
 ```
 
-### 5. Final Setup Steps
+### 5. Final Setup Steps (Optional but recommended)
 1. **Restart your computer** (required for PATH and conda init)
 2. Open **VS Code** → `Ctrl+Shift+P` → "Python: Select Interpreter" → choose `ai_project`
-3. (Optional) Login to GitHub CLI:
+3. Login to GitHub CLI:
 ```powershell
 gh auth login
 ```
