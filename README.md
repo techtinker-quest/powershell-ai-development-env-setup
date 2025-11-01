@@ -20,7 +20,8 @@ Perfect for **data science**, **computer vision**, **NLP**, and **MLOps**.
 - 💬 **NLP tools:** `spaCy`, `langdetect`, `datasets`, `accelerate`  
 - 📊 **MLOps:** `MLflow`, `label-studio`  
 - 🧹 **Dev tools:** `black`, `flake8`, `mypy`, `pytest`  
-- 🔗 **VS Code:** Auto-configured with 7 AI-friendly extensions  
+- 🔗 **VS Code:** Auto-configured with 7 AI-friendly extensions such as Linting, formatting, interpreter
+- ⚙️ **Auto GPU detection:** Installs CUDA-enabled PyTorch if available
 
 | Category       | Tools |
 |----------------|-------|
@@ -58,7 +59,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/techtinker-quest/power
 & "$env:TEMP\setup-ai-env.ps1"
 ```
 This downloads and runs the script directly from GitHub.
--Scope Process ensures no permanent policy changes.
+No permanent policy change — -Scope Process is safe and temporary.
 
 ### Option 2: Clone with Git (For Developers)
 If Git is installed, clone and run locally:
@@ -76,14 +77,13 @@ Run as Administrator
 https://github.com/techtinker-quest/powershell-ai-development-env-setup/blob/main/scripts/setup-ai-env.ps1
 2. Click "Raw" → Right-click → "Save As" → setup-ai-env.ps1
 3. Open PowerShell as Administrator, navigate to the file:
-
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force
 .\setup-ai-env.ps1
 ```
 
 ## Post-Installation
-
+Do this in a new PowerShell window (not the one that ran the script)
 
 ### 1. Allow scripts (once per user)
 ```powershell
@@ -103,19 +103,25 @@ function ai {
 '@ -Force
 ```
 
-### 3. Load it
+### 3. Reload profile
 ```powershell
 . $PROFILE
 ```
-### 4. Test it
+### 4. Test activation
 ```powershell
 ai
 python -c "import torch, ultralytics; print('All good!')"
 ```
 
-### and then...
-1. Restart your computer (required for PATH and conda init)
-2. Open VS Code → Ctrl+Shift+P → "Python: Select Interpreter" → choose ai_project
+### Expected output:
+```text
+AI Environment Activated! (ai_project)
+All good! YOLO ready.
+```
+
+### Final Setup Steps
+1. **Restart your computer** (required for PATH and conda init)
+2. Open **VS Code** → `Ctrl+Shift+P` → "Python: Select Interpreter" → choose `ai_project`
 3. (Optional) Login to GitHub CLI:
 ```powershell
 gh auth login
@@ -124,16 +130,14 @@ gh auth login
 ---
 
 ## 🧩 Customization
-
-To skip TensorFlow, keep its section commented in the script
-
-Add or remove packages directly in the relevant section (Core, Vision, NLP, etc.)
-
-For advanced environment tuning, see docs/usage.md
+**Skip TensorFlow?** Keep its line commented in the script
+**Add packages?** Edit the relevant section (Core, Vision, NLP, etc.)
+**Use different** Python version? Change `python=3.12` in script
+**Advanced config** → see `docs/usage.md`
 
 ---
 
-## 🧰 Troubleshooting
+## 🧰 Troubleshooting - 🐛 Common Issues and Quick Fixes
 
 Always run PowerShell as Administrator
 
@@ -142,6 +146,14 @@ Check for sufficient disk space and a stable internet connection
 View detailed logs in the script output
 
 For detailed error messages and known issues, see docs/troubleshooting.md
+
+
+| Issue | Quick Fix |
+| :--- | :--- |
+| `conda` not recognized | Close & reopen **PowerShell** → run `ai` |
+| `python` not found | Run `ai` **first** |
+| Script fails | Check **internet**, run as **Admin**, check **log** in `%USERPROFILE%` |
+| VS Code not detecting env | Restart **VS Code** → reselect **interpreter** |
 
 
 ## 🤝 Contributing
