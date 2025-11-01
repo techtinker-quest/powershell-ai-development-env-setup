@@ -54,7 +54,7 @@ Run this **single command** in **PowerShell (as Administrator)**:
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; `
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/techtinker-quest/powershell-ai-development-env-setup/refs/heads/main/scripts/setup-ai-env.ps1" -OutFile "$env:TEMP\setup-ai-env.ps1"; `
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/techtinker-quest/powershell-ai-development-env-setup/main/scripts/setup-ai-env.ps1" -OutFile "$env:TEMP\setup-ai-env.ps1"; `
 & "$env:TEMP\setup-ai-env.ps1"
 ```
 This downloads and runs the script directly from GitHub.
