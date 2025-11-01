@@ -3,7 +3,7 @@
  AI DEVELOPMENT ENVIRONMENT SETUP SCRIPT (Windows)
  Author: Sandeep A + Grok (xAI) + ChatGPT
  Target: Python 3.12 + Miniforge + Mamba + VS Code + GitHub
- Version: 2025-11-01 (v1.1)
+ Version: 2025-11-01 (v1.2)
 =============================================================
 
  Highlights:
@@ -199,7 +199,10 @@ try {
             if (Test-Path $p) { $env:Path += ";$p" }
         }
     }
-    $codeCmd = (Get-Command code -ErrorAction SilentlyContinue)?.Source
+
+    $cmd = Get-Command code -ErrorAction SilentlyContinue
+    if ($cmd) { $codeCmd = $cmd.Source } else { $codeCmd = $null }
+
     if ($codeCmd) {
         $extensions = @(
             "ms-python.python",
@@ -264,14 +267,14 @@ try {
     Write-Host "`nSETUP COMPLETE" -ForegroundColor Green
     Write-Host ("═" * 70) -ForegroundColor DarkGray
     Write-Host @"
-    Next steps:
-      1. Restart your computer (to apply PATH + conda init)
-      2. Open VS Code -> Ctrl+Shift+P -> 'Python: Select Interpreter' -> choose 'ai_project'
-      3. (Optional) Run: gh auth login -> connect to GitHub
-      4. Create project folder -> code .
-      5. Test: conda run -n ai_project python -c "import torch; print(torch.cuda.is_available())"
-      6. Enjoy your fully loaded AI environment!
-    "@
+Next steps:
+  1. Restart your computer (to apply PATH + conda init)
+  2. Open VS Code -> Ctrl+Shift+P -> 'Python: Select Interpreter' -> choose 'ai_project'
+  3. (Optional) Run: gh auth login -> connect to GitHub
+  4. Create project folder -> code .
+  5. Test: conda run -n ai_project python -c "import torch; print(torch.cuda.is_available())"
+  6. Enjoy your fully loaded AI environment!
+"@
 
 } catch {
     Write-Error "SETUP FAILED: $_"
