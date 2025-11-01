@@ -30,7 +30,7 @@ Perfect for **data science**, **computer vision**, **NLP**, and **MLOps**.
 | **AI/ML**      | PyTorch (GPU/CPU auto), Transformers |
 | **Vision/OCR** | `ultralytics`, `paddleocr`, `easyocr` |
 | **NLP**        | `spaCy`, `langdetect`, `datasets`, `accelerate` |
-| **MLOps**      | `MLflow`, `label-studio` |
+| **MLOps**      | `MLflow`, `argilla` |
 | **Dev**        | `black`, `flake8`, `mypy`, `pytest` |
 | **VS Code**    | Python, Pylance, Jupyter, GitLens, etc. |
 
