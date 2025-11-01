@@ -3,7 +3,7 @@
  AI DEVELOPMENT ENVIRONMENT SETUP SCRIPT (Windows)
  Author: Sandeep A + Grok (xAI) + ChatGPT
  Target: Python 3.12 + Miniforge + Mamba + VS Code + GitHub
- Version: 2025-11-01 (v1.2)
+ Version: 2025-11-01 (v1.3)
 =============================================================
 
  Highlights:
@@ -266,7 +266,7 @@ try {
     # === FINAL SUCCESS MESSAGE ===
     Write-Host "`nSETUP COMPLETE" -ForegroundColor Green
     Write-Host ("═" * 70) -ForegroundColor DarkGray
-    Write-Host @"
+Write-Host @'
 Next steps:
   1. Restart your computer (to apply PATH + conda init)
   2. Open VS Code -> Ctrl+Shift+P -> 'Python: Select Interpreter' -> choose 'ai_project'
@@ -274,7 +274,8 @@ Next steps:
   4. Create project folder -> code .
   5. Test: conda run -n ai_project python -c "import torch; print(torch.cuda.is_available())"
   6. Enjoy your fully loaded AI environment!
-"@
+'@
+
 
 } catch {
     Write-Error "SETUP FAILED: $_"
