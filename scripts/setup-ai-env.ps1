@@ -3,7 +3,7 @@
  AI DEVELOPMENT ENVIRONMENT SETUP SCRIPT (Windows)
  Author: Sandeep A + Grok (xAI) + ChatGPT
  Target: Python 3.12 + Miniforge + Mamba + VS Code + GitHub
- Version: 2025-11-01 (v1.0)
+ Version: 2025-11-01 (v1.1)
 =============================================================
 
  Highlights:
@@ -169,7 +169,7 @@ try {
     conda run -n ai_project pip install torch torchvision torchaudio --index-url $pytorchIndex
 
     # === STEP 8: Vision + OCR ===
-    Write-Host "`n$(Stamp) STEP 8: Installing Vision & OCR Libraries" -ForegroundColor Cyan
+    Write-Host "`n$(Stamp) STEP 8: Installing Vision and OCR Libraries" -ForegroundColor Cyan
     conda run -n ai_project pip install ultralytics==8.* paddleocr==2.* easyocr==1.*
 
     # === STEP 9: NLP ===
@@ -177,7 +177,7 @@ try {
     conda run -n ai_project pip install spacy>=3.7 langdetect>=1.0.9 transformers datasets accelerate
 
     # === STEP 10: Tracking & Annotation ===
-    Write-Host "`n$(Stamp) STEP 10: Installing Tracking & Annotation Tools" -ForegroundColor Cyan
+    Write-Host "`n$(Stamp) STEP 10: Installing Tracking and Annotation Tools" -ForegroundColor Cyan
     conda run -n ai_project pip install label-studio>=1.9 mlflow>=2.8
 
     # === STEP 11: Developer Utilities ===
@@ -264,14 +264,14 @@ try {
     Write-Host "`nSETUP COMPLETE" -ForegroundColor Green
     Write-Host ("═" * 70) -ForegroundColor DarkGray
     Write-Host @"
-Next steps:
-  1. Restart your computer (to apply PATH + conda init)
-  2. Open VS Code → Ctrl+Shift+P → 'Python: Select Interpreter' → choose 'ai_project'
-  3. (Optional) Run: gh auth login → connect to GitHub
-  4. Create project folder → code .
-  5. Test: conda run -n ai_project python -c "import torch; print(torch.cuda.is_available())"
-  6. Enjoy your fully loaded AI environment!
-"@
+    Next steps:
+      1. Restart your computer (to apply PATH + conda init)
+      2. Open VS Code -> Ctrl+Shift+P -> 'Python: Select Interpreter' -> choose 'ai_project'
+      3. (Optional) Run: gh auth login -> connect to GitHub
+      4. Create project folder -> code .
+      5. Test: conda run -n ai_project python -c "import torch; print(torch.cuda.is_available())"
+      6. Enjoy your fully loaded AI environment!
+    "@
 
 } catch {
     Write-Error "SETUP FAILED: $_"
