@@ -3,7 +3,7 @@
  AI DEVELOPMENT ENVIRONMENT SETUP SCRIPT (Windows)
  Author: Sandeep A + Grok (xAI) + ChatGPT
  Target: Python 3.12 + Miniforge + Mamba + VS Code + GitHub
- Version: 2025-11-01 (v1.3)
+ Version: 2025-11-01 (v1.4)
 =============================================================
 
  Highlights:
@@ -124,7 +124,7 @@ try {
         throw "Failed to initialize Conda shell hook."
     }
 
-    # === STEP 4: Update Base Environment (Fixed: update, not upgrade) ===
+    # === STEP 4: Update Base Environment ===
     Write-Host "`n$(Stamp) STEP 4: Updating base environment with Mamba" -ForegroundColor Cyan
     mamba update -n base -c conda-forge --all -y
 
@@ -154,7 +154,6 @@ try {
         Write-Host "CUDA detected → installing GPU-enabled PyTorch" -ForegroundColor Green
         $pytorchIndex = "https://download.pytorch.org/whl/cu118"
 
-        # Use conda run for mamba list
         $cudaList = & "$miniforgePath\condabin\conda.exe" run -n ai_project mamba list cuda-toolkit --json | ConvertFrom-Json
         $cudaInstalled = $cudaList.name -contains "cuda-toolkit"
         if (-not $cudaInstalled) {
@@ -197,7 +196,7 @@ try {
         )
         foreach ($p in $altBins) {
             if (Test-Path $p) { $env:Path += ";$p" }
-        }
+        }   # <-- **THIS CLOSING BRACE WAS MISSING**
     }
 
     $cmd = Get-Command code -ErrorAction SilentlyContinue
@@ -266,7 +265,9 @@ try {
     # === FINAL SUCCESS MESSAGE ===
     Write-Host "`nSETUP COMPLETE" -ForegroundColor Green
     Write-Host ("═" * 70) -ForegroundColor DarkGray
-Write-Host @'
+
+    # <<<--- HERE-STRING MUST START AND END ON ITS OWN LINE WITH NO SPACES BEFORE THE DELIMITER --->
+    Write-Host @'
 Next steps:
   1. Restart your computer (to apply PATH + conda init)
   2. Open VS Code -> Ctrl+Shift+P -> 'Python: Select Interpreter' -> choose 'ai_project'
@@ -275,7 +276,7 @@ Next steps:
   5. Test: conda run -n ai_project python -c "import torch; print(torch.cuda.is_available())"
   6. Enjoy your fully loaded AI environment!
 '@
-
+    # <<<--- END OF HERE-STRING -------------------------------------------------
 
 } catch {
     Write-Error "SETUP FAILED: $_"
