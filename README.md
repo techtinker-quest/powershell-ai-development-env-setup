@@ -119,7 +119,7 @@ AI Environment Activated! (ai_project)
 All good! YOLO ready.
 ```
 
-### Final Setup Steps
+### 5. Final Setup Steps
 1. **Restart your computer** (required for PATH and conda init)
 2. Open **VS Code** → `Ctrl+Shift+P` → "Python: Select Interpreter" → choose `ai_project`
 3. (Optional) Login to GitHub CLI:
