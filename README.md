@@ -1,55 +1,86 @@
-# PowerShell AI Development Environment Setup
+# 🧠 AI Development Environment Setup (Windows, PowerShell)
 
-PowerShell automation to prepare a fully-functional Windows environment for machine learning, AI, and Python development — in minutes.
+Automated PowerShell script to bootstrap a complete AI & Python development environment on Windows — in minutes.
 
-## Features
+This standalone setup is designed for data science, computer vision, NLP, and MLOps workflows.  
+It installs all essential developer tools, Python libraries, and configuration automatically.
 
-- Installs latest Git, Visual Studio Code, and VS Code extensions for Python and AI
-- Deploys Miniforge (with Mamba) for Python/Conda package management
-- Creates isolated `ai_project` Conda environment with Python 3.12
-- Installs core scientific/AI libraries: numpy, pandas, scikit-learn, matplotlib, JupyterLab, opencv, torch, transformers, and more
-- Sets up OCR/Vision/NLP tools (ultralytics, paddleocr, easyocr, spaCy, etc.)
-- Configures ML experiment tracking tools (label-studio, MLflow)
-- Developer utilities: black, flake8, mypy, pytest
-- Optionally includes TensorFlow support
-- Installs/configures GitHub CLI and all relevant VS Code settings
+---
 
-## Requirements
+## 🚀 Features
 
-- Windows 10 or newer
-- Administrator access (to install system dependencies)
-- Working internet connection
+- 🧩 **One-step automation:** Installs Git, Visual Studio Code, and common VS Code extensions  
+- 🐍 **Python management:** Deploys Miniforge (with Mamba) and creates an isolated `ai_project` Conda environment (Python 3.12)  
+- ⚙️ **Preloaded packages:** Core scientific stack (`numpy`, `pandas`, `scikit-learn`, `matplotlib`, `JupyterLab`, `opencv`, etc.)  
+- 🤖 **AI frameworks:** PyTorch (default), Transformers, optional TensorFlow  
+- 👁️ **Vision & OCR:** `ultralytics`, `paddleocr`, `easyocr`  
+- 💬 **NLP tools:** `spaCy`, `langdetect`, `transformers`, `datasets`, `accelerate`  
+- 📊 **Experiment tracking & annotation:** `MLflow`, `label-studio`  
+- 🧹 **Developer utilities:** `black`, `flake8`, `mypy`, `pytest`  
+- 🔗 **GitHub integration:** Installs GitHub CLI and configures VS Code with AI-friendly defaults  
 
-## Quick Start
+---
+
+## 🧱 Requirements
+
+- Windows 10 or newer  
+- PowerShell 5+  
+- Administrator access (for installing dependencies)  
+- Stable internet connection  
+
+---
+
+## ⚡ Quick Start
 
 1. **Clone this repository:**
-git clone https://github.com/yourname/powershell-ai-development-env-setup.git
-cd powershell-ai-development-env-setup
+
+   ```powershell
+   git clone https://github.com/yourname/ai-dev-setup.git
+   cd ai-dev-setup
+
+2. **Run the setup script (as Administrator):**
+   ```powershell
+   Set-ExecutionPolicy Bypass -Scope Process -Force
+   ./scripts/setup-ai-env.ps1
+
+3. **After installation completes:**
+   Restart your computer (to refresh PATH and conda init)
+   Open VS Code → Ctrl+Shift+P → “Python: Select Interpreter” → choose ai_project
+   Optionally run:
+   ```powershell
+   gh auth login   # Connect GitHub CLI
+
+---
+
+## 🧩 Customization
+
+To skip TensorFlow, keep its section commented in the script
+
+Add or remove packages directly in the relevant section (Core, Vision, NLP, etc.)
+
+For advanced environment tuning, see docs/usage.md
+
+---
+
+## 🧰 Troubleshooting
+
+Always run PowerShell as Administrator
+
+Check for sufficient disk space and a stable internet connection
+
+For detailed error messages and known issues, see docs/troubleshooting.md
 
 
-2. **Run the setup script as Administrator in PowerShell:**
-Set-ExecutionPolicy Bypass -Scope Process -Force
-./scripts/setup-ai-env.ps1
+## 🤝 Contributing
+
+Contributions, bug reports, and feature ideas are welcome!
+See CONTRIBUTING.md
+ for guidelines.
 
 
-3. **Follow on-screen instructions for post-setup tasks.**
 
-## Customizing
+## 📄 License
 
-- To skip TensorFlow installation, leave the related lines commented in the script
-- You may edit the script to add/remove Python packages as needed
-- For non-standard workflows, see [docs/usage.md](docs/usage.md) for advanced options
+Distributed under the MIT License
 
-## Troubleshooting
-
-- Ensure you run PowerShell “As Administrator”
-- If installing fails, check for internet connection, disk space, or permissions
-- For known issues and solutions, see [docs/troubleshooting.md](docs/troubleshooting.md)
-
-## Contributing
-
-Contributions, bug reports, and suggestions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-## License
-
-[MIT](LICENSE)
+---
