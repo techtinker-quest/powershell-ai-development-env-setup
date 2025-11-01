@@ -84,6 +84,36 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 ## Post-Installation
 
+
+### 1. Allow scripts (once per user)
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+```
+
+### 2. Create/recreate the `ai` shortcut
+```powershell
+if (-not (Test-Path $PROFILE)) { New-Item -Path $PROFILE -ItemType File -Force | Out-Null }
+Add-Content -Path $PROFILE -Value @'
+function ai {
+    $env:Path = "$env:USERPROFILE\miniforge3\condabin;$env:Path"
+    & "$env:USERPROFILE\miniforge3\condabin\conda.bat" activate ai_project 2>$null
+    $env:Path = "$env:USERPROFILE\miniforge3\envs\ai_project\Scripts;$env:USERPROFILE\miniforge3\envs\ai_project;$env:USERPROFILE\miniforge3\envs\ai_project\Library\bin;$env:Path"
+    Write-Host "AI Environment Activated! (ai_project)" -ForegroundColor Cyan
+}
+'@ -Force
+```
+
+### 3. Load it
+```powershell
+. $PROFILE
+```
+### 4. Test it
+```powershell
+ai
+python -c "import torch, ultralytics; print('All good!')"
+```
+
+### and then...
 1. Restart your computer (required for PATH and conda init)
 2. Open VS Code → Ctrl+Shift+P → "Python: Select Interpreter" → choose ai_project
 3. (Optional) Login to GitHub CLI:
